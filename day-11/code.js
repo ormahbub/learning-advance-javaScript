@@ -78,20 +78,15 @@ function counterStep() {
 
 let modifyValue = counterStep();
 
-function clickBtn ( className ) {
-    document.querySelector(`.${className}`).addEventListener("click", function() {
-        if ( className === "increment" ) {
-            modifyValue.increment();
-        } else if ( className === "reset" ) {
-            modifyValue.reset();
-        } else if ( className === "decrement" ) {
-            modifyValue.decrement();
-        }
+function clickBtn ( classNames ) {
+
+    classNames.map( function(className) {
+        document.querySelector(`.${className}`).addEventListener("click", function() {
+            modifyValue[className]();
+        })
     })
+
 }
 
-clickBtn("increment");
-clickBtn("reset");
-clickBtn("decrement");
-
+clickBtn(["increment", "reset", "decrement"]);
 
